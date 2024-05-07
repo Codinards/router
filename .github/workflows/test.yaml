@@ -1,0 +1,27 @@
+name: Unit tests and code coverage
+
+on:
+  push:
+    branches: [master, main]
+    tags: ['*']
+
+jobs:
+  unit-tests-code-coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v3
+
+      - name: Composer installation
+        uses: php-actions/composer@v6
+
+      - name: Unit tests execution with PHPUnit
+        uses: php-actions/phpunit@v3
+        with:
+          php_extension: xdebug
+          configuration: phpunit.xml
+          args: --coverage-html
+        env:
+          XDEBUG_MODE: coverage
+          TEST_NAME: Ntouoka
