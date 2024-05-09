@@ -21,7 +21,7 @@ jobs:
         with:
           php_extension: xdebug
           configuration: phpunit.xml
-          args: --coverage-html
+          args: --coverage-text
         env:
           XDEBUG_MODE: coverage
           TEST_NAME: Ntouoka
